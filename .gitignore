@@ -1,6 +1,6 @@
 # My work
 /model_data
-.tester
+tester.ipynb
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
