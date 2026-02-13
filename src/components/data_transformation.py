@@ -32,6 +32,7 @@ class DataTransformation:
                 "race_ethnicity",
                 "parental_level_of_education",
                 "lunch",
+                "test_preparation_course",
             ]
 
             num_pipeline = Pipeline(
@@ -82,13 +83,11 @@ class DataTransformation:
             numerical_columns = ["writing_score", "reading_score"]
 
             input_feature_train_df = train_data.drop(
-                columns=[target_column_name, "average_score"], axis=1
+                columns=[target_column_name], axis=1
             )
             target_feature_train_df = train_data[target_column_name]
 
-            input_feature_test_df = test_data.drop(
-                columns=[target_column_name, "average_score"], axis=1
-            )
+            input_feature_test_df = test_data.drop(columns=[target_column_name], axis=1)
             target_feature_test_df = test_data[target_column_name]
 
             logging.info("Initiating data transformation on train and test data.....")

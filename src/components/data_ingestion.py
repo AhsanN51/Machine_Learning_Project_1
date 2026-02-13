@@ -8,8 +8,9 @@ from src.logger import logging
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
-from src.components.data_transformation import DataTransformationConfig
 from src.components.data_transformation import DataTransformation
+
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass
@@ -27,7 +28,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Initiating data ingestion...")
         try:
-            data = pd.read_csv("notebook\data\preprocessed_data.csv")
+            data = pd.read_csv("notebook\data\students.csv")
             logging.info("Data successfully ingested!")
 
             os.makedirs(
@@ -66,3 +67,6 @@ if __name__ == "__main__":
     train_data_arr, test_data_arr, _ = data_transformer.initiate_data_transformation(
         train_data, test_data
     )
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_data_arr, test_data_arr))
